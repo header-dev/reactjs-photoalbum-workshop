@@ -1,40 +1,34 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Home extends Component {
-
-    constructor(){
-        super()
-
-        this.state = {
-            age : 0
-        }
-    }
-
-
-    increteAge = () => {
-        this.setState((prevState) => {
-            return {
-                age: prevState.age + 1
-            }
-        })
-    }
-
-    decreteAge = () => {
-        this.setState((prevState) => {
-            return {
-                age: prevState.age - 1
-            }
-        })
-    }
-
-
+class Home extends Component {
+    state = { age : 0 }
     render() {
         return (
             <div>
-                <h3>อายุของ คุณ : {this.state.age}</h3>
-                <button className="button is-primary is-rounded" onClick={this.increteAge}>+คบิกบวกอายุ</button>
-                <button className="button is-rounded" onClick={this.decreteAge}>-คลิกลบอายุ</button>
+                <h3>อายุของคุณ : {this.props.age} ปี</h3>
+                <button className="button is-primary" onClick={this.props.increteAge}>+คลิกบวกอายุ</button>
+                <button className="button is-danger" onClick={this.props.decreteAge}>-คลิกลบอายุ</button>
             </div>
         )
     }
 }
+
+const mapStateToProps = state =>{
+    return {
+        age: state.counter
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        increteAge: () => {
+            dispatch({type: 'INCREMENT'})
+        },
+        decreteAge: () => {
+            dispatch({type: 'DECREMENT'})
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home)
