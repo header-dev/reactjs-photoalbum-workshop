@@ -24,3 +24,17 @@ const fetchAlbums = userID => {
                 .then(result => result.json())
     }
 }
+
+export const loadPhotos = albumID => {
+    return (dispatch) => {
+        return dispatch(fetchPhoto(albumID))
+    }
+}
+
+const fetchPhoto = albumID => {
+    return {
+        type: 'LOAD_PHOTOS',
+        payload: fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumID}`)
+                .then(result => result.json())
+    }
+}

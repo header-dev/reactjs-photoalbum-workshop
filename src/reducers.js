@@ -59,10 +59,35 @@ const albums = (state = initialState, action) => {
 }
 
 
+const photos = (state = initialState, action) => {
+  switch(action.type) {
+    case 'LOAD_PHOTOS_PENDING':
+      return {
+        isRejected : false,
+        data : null
+      }
+    case 'LOAD_PHOTOS_FULFILLED':
+      return {
+        isRejected: false,
+        data: action.payload
+      }
+    case 'LOAD_PHOTOS_REJECTED':
+      return {
+        isRejected: true,
+        data: null
+      }
+    default :
+      return state
+  }
+}
+
+
+
 const reducers = combineReducers({
     counter: countAge,
     users,
-    albums
+    albums,
+    photos
 });
 
 export default reducers

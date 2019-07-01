@@ -6,7 +6,11 @@ export default class AlbumList extends Component {
         const { data } = this.props
         return (
             <div>
-                
+                {data && data.map(e => {
+                    return (
+                        <Album data={e} key={e.id} />
+                    )
+                })}
             </div>
         )
     }

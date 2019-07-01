@@ -35,7 +35,7 @@ class Header extends Component {
                 <div id="navbarBasicExample" className={ this.state.collapsed ? "navbar-menu" : "navbar-menu is-active" }>
                     <div className="navbar-start">
                         <Link to="/" className="navbar-item">Home</Link>
-                        <Link to="/user" className="navbar-item">User</Link>
+                        <Link to="/user" className="navbar-item">Photo</Link>
                     </div>
                 </div>
             </nav>

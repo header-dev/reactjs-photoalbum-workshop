@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { loadAlbums } from '../actions'
 import { connect } from 'react-redux';
+import  AlbumList from '../components/Albums/AlbumList';
 
 class Album extends Component {
 
@@ -18,7 +19,7 @@ class Album extends Component {
                 <div className="column">
                     <div className="box">
                         <p className="title is-5">Album : { this.props.params.title }</p>
-                        
+                        <AlbumList data={albums.data} />
                     </div>
                 </div>
             </div>
